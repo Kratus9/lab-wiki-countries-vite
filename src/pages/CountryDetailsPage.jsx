@@ -5,13 +5,13 @@ import { useState, useEffect } from "react";
 function CountryDetails() {
     const { countryId } = useParams()
 
-    const { countryDetails, setCountryDetails } = useState(null)
+    const [ countryDetails, setCountryDetails ] = useState(null)
 
     useEffect(() => {
         axios.get(`https://ih-countries-api.herokuapp.com/countries/${countryId}`)
         .then((response) => {
-            console.log(response)
             setCountryDetails(response.data)
+            console.log(countryDetails)
         })
         .catch((error) => {
             console.log(error)
@@ -27,7 +27,7 @@ function CountryDetails() {
             <h1>Country Details</h1>
             <h2>{countryDetails.name.common}</h2>
             <p>Capital: {countryDetails.capital[0]}</p>
-            <p>Area: {countryDetails.area} km</p>
+            <p>Area: {countryDetails.area} km²</p>
             <h4>Borders:</h4>
             {countryDetails.borders.map((borderCountry) => (
                 <li key={borderCountry}>

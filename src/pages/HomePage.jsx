@@ -9,7 +9,7 @@ function HomePage() {
     axios
       .get(`https://ih-countries-api.herokuapp.com/countries`)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setCountries(response.data);
       })
       .catch((error) => {
